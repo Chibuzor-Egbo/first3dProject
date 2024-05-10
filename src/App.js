@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
+import Building from "./Building";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Canvas>
+        <ambientLight intensity={1} />
+        <OrbitControls />
+        <Suspense fallback={null}>
+          <Building />
+        </Suspense>
+      </Canvas>
+      <div className="container">
+        <h1>Built by Chibuzor Egbo</h1>
+        <p>3js, three fiber, javascript</p>
+      </div>
+    </>
   );
 }
 
